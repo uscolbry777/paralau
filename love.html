@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<! -- Ing. Bryan. Para el amor de mi vida-->
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Lauu </title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffe6f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            position: relative;
+        }
+        .heart {
+            background-color: #ff6b6b;
+            height: 150px;
+            width: 150px;
+            transform: rotate(-45deg);
+            position: relative;
+            margin: 50px auto;
+            box-shadow: 0 0 40px rgba(255, 0, 0, 0.3);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .heart:before, .heart:after {
+            content: "";
+            background-color: #ff6b6b;
+            border-radius: 50%;
+            height: 150px;
+            width: 150px;
+            position: absolute;
+        }
+        .heart:before {
+            top: -75px;
+            left: 0;
+        }
+        .heart:after {
+            top: 0;
+            left: 75px;
+        }
+        .heart:hover {
+            transform: rotate(-45deg) scale(1.1);
+        }
+        .message {
+            font-size: 24px;
+            color: #ff4081;
+            margin-top: 20px;
+            opacity: 0;
+            transition: opacity 1s ease;
+            position: relative;
+            z-index: 10;
+        }
+        .hidden-message {
+            display: none;
+            margin-top: 30px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            position: relative;
+            z-index: 10;
+        }
+        .hidden-title {
+            font-size: 28px;
+            color: #ff4081;
+            margin-bottom: 15px;
+        }
+        .hidden-text {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.5;
+        }
+        .falling-hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .falling-heart {
+            position: absolute;
+            color: #ff4081;
+            font-size: 20px;
+            user-select: none;
+            animation-name: fall;
+            animation-timing-function: linear;
+        }
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="falling-hearts" id="fallingHearts"></div>
+        <h1 class="message" id="initialMessage">Lau, Haz clic en el corazón</h1>
+        <div class="heart" id="heart" onclick="showLove()"></div>
+        <div class="hidden-message" id="hiddenMessage">
+            <div class="hidden-title">¡Te quiero con todo mi corazón!</div>
+            <div class="hidden-text">
+                Un día a tu lado es un regalo. Eres una luz, una inspiración y una razón de sonreír. 
+                Gracias por existir miniatura! y por permitirme ser parte de tu vida. ¡tqm infinitamente!
+                Att: pelo en pausa xD
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // mi mensaje inicial
+        window.onload = function() {
+            document.getElementById('initialMessage').style.opacity = 1;
+        }
+
+        // mensaje de amor
+        function showLove() {
+            // Ocultar el mensaje inicial
+            document.getElementById('initialMessage').style.opacity = 0;
+            
+            // mensaje oculto
+            setTimeout(function() {
+                document.getElementById('hiddenMessage').style.display = 'block';
+                createFallingHearts();
+            }, 500);
+        }
+
+        // corazones que caen
+        function createFallingHearts() {
+            const container = document.getElementById('fallingHearts');
+            
+            // Crear 50 corazones
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.innerHTML = '❤';
+                    heart.classList.add('falling-heart');
+                    
+                    // Posición aleatoria horizontal
+                    const left = Math.random() * 100;
+                    heart.style.left = left + '%';
+                    
+                    // Tamaño aleatorio
+                    const size = Math.random() * 30 + 10;
+                    heart.style.fontSize = size + 'px';
+                    
+                    // Velocidad aleatoria
+                    const duration = Math.random() * 5 + 3;
+                    heart.style.animation = `fall ${duration}s linear forwards`;
+                    
+                    // Añadir al contenedor
+                    container.appendChild(heart);
+                    
+                    // Eliminar después de la animación
+                    setTimeout(() => {
+                        container.removeChild(heart);
+                    }, duration * 1000);
+                }, i * 100);
+            }
+        }
+    </script>
+</body>
+</html>
