@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <title>PalacioLB</title>
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.freepik.com/512/202/202640.png">
+
+    <title>👑PalacioLB</title>
     <style>
         * {
             margin: 0;
@@ -14,106 +16,253 @@
         
         body {
             font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #f5f1e8 0%, #e8dcc0 50%, #d4c5a0 100%);
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
             min-height: 100vh;
             position: relative;
             overflow-x: hidden;
         }
         
+        /* Overlay de login mejorado */
         .login-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.95), rgba(15, 52, 96, 0.95));
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 1000;
         }
         
+        /* Caja de login con efectos dorados */
         .login-box {
-            background: linear-gradient(145deg, #fff 0%, #f8f5f0 100%);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(248, 245, 240, 0.9));
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: 0 0 60px rgba(255, 215, 0, 0.4),
+                        0 20px 40px rgba(0, 0, 0, 0.3),
+                        inset 0 0 30px rgba(255, 215, 0, 0.1);
             text-align: center;
-            border: 3px solid #d4af37;
-            max-width: 400px;
+            border: 3px solid #ffd700;
+            max-width: 450px;
             width: 90%;
+            position: relative;
+            animation: pulseGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 60px rgba(255, 215, 0, 0.4), 0 20px 40px rgba(0, 0, 0, 0.3); }
+            50% { box-shadow: 0 0 80px rgba(255, 215, 0, 0.6), 0 25px 50px rgba(0, 0, 0, 0.4); }
+        }
+        
+        /* Alas flotantes */
+        .floating-wings {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            opacity: 0.8;
+            filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.6));
+        }
+        
+        .wing-left {
+            left: -140px;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: floatLeft 4s ease-in-out infinite;
+        }
+        
+        .wing-right {
+            right: -140px;
+            top: 50%;
+            transform: translateY(-50%) scaleX(-1);
+            animation: floatRight 4s ease-in-out infinite;
+        }
+        
+        @keyframes floatLeft {
+            0%, 100% { transform: translateY(-50%) translateX(0) rotate(-5deg); }
+            25% { transform: translateY(-55%) translateX(10px) rotate(0deg); }
+            50% { transform: translateY(-45%) translateX(-5px) rotate(5deg); }
+            75% { transform: translateY(-55%) translateX(5px) rotate(-3deg); }
+        }
+        
+        @keyframes floatRight {
+            0%, 100% { transform: translateY(-50%) scaleX(-1) translateX(0) rotate(5deg); }
+            25% { transform: translateY(-55%) scaleX(-1) translateX(-10px) rotate(0deg); }
+            50% { transform: translateY(-45%) scaleX(-1) translateX(5px) rotate(-5deg); }
+            75% { transform: translateY(-55%) scaleX(-1) translateX(-5px) rotate(3deg); }
         }
         
         .login-box h2 {
-            color: #8b4513;
-            margin-bottom: 30px;
-            font-size: 28px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            color: #ffd700;
+            margin-bottom: 35px;
+            font-size: 32px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3),
+                         0 0 20px rgba(255, 215, 0, 0.4);
+            animation: titleShine 2s ease-in-out infinite;
+        }
+
+        @keyframes titleShine {
+            0%, 100% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 215, 0, 0.4); }
+            50% { text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4), 0 0 30px rgba(255, 215, 0, 0.6); }
         }
         
         .login-box input {
             width: 100%;
             padding: 15px;
-            border: 2px solid #d4af37;
-            border-radius: 10px;
+            border: 2px solid #ffd700;
+            border-radius: 15px;
             font-size: 18px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             text-align: center;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1),
+                        inset 0 0 10px rgba(255, 215, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .login-box input:focus {
+            outline: none;
+            border-color: #ffed4e;
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3),
+                        inset 0 0 15px rgba(255, 215, 0, 0.1);
         }
         
         .login-box button {
-            background: linear-gradient(145deg, #d4af37, #b8941f);
-            color: white;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #1a1a2e;
             border: none;
-            padding: 15px 30px;
-            border-radius: 10px;
-            font-size: 18px;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 20px;
+            font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
         
         .login-box button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 7px 20px rgba(0, 0, 0, 0.3);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(255, 215, 0, 0.6);
+        }
+
+        /* Overlay de Versalles */
+        .versailles-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            display: none;
+            z-index: 2000;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .versailles-overlay.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .versailles-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            animation: shimmerEffect 4s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes shimmerEffect {
+            0% {
+                filter: brightness(0.8) contrast(1.2);
+                transform: scale(1.1);
+            }
+            25% {
+                filter: brightness(1.3) contrast(1.3) saturate(1.2);
+                transform: scale(1.05);
+            }
+            50% {
+                filter: brightness(1.5) contrast(1.4) saturate(1.3);
+                transform: scale(1);
+            }
+            75% {
+                filter: brightness(1.2) contrast(1.2) saturate(1.1);
+                transform: scale(1.02);
+            }
+            100% {
+                filter: brightness(0.5) contrast(0.8);
+                transform: scale(1.1);
+                opacity: 0;
+            }
+        }
+
+        .shine-effect {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.3), 
+                transparent);
+            animation: shine 2s ease-in-out;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
         }
         
+        /* Contenido principal mejorado */
         .main-content {
             display: none;
             padding: 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f5f0 50%, #fff9e6 100%);
+            min-height: 100vh;
         }
         
         .palace-header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             position: relative;
         }
         
         .welcome-message {
-            font-size: 48px;
-            color: #8b4513;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            margin-bottom: 10px;
+            font-size: 52px;
+            background: linear-gradient(45deg, #ffd700, #ffed4e, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            margin-bottom: 15px;
             animation: fadeInGlow 2s ease-in;
         }
         
         @keyframes fadeInGlow {
             from {
                 opacity: 0;
-                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+                transform: translateY(-20px);
             }
             to {
                 opacity: 1;
-                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 20px rgba(212, 175, 55, 0.5);
+                transform: translateY(0);
             }
         }
         
         .subtitle {
-            font-size: 20px;
-            color: #a0522d;
+            font-size: 24px;
+            color: #d4af37;
             font-style: italic;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
         }
         
         .container {
@@ -125,39 +274,43 @@
         }
         
         .chat-section {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 20px;
-            padding: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            border: 2px solid #d4af37;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(255, 249, 230, 0.9));
+            border-radius: 25px;
+            padding: 25px;
+            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.15),
+                        0 15px 35px rgba(0, 0, 0, 0.1);
+            border: 3px solid #ffd700;
             min-height: 600px;
         }
         
         .chat-header {
             text-align: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #d4af37;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #ffd700;
         }
         
         .chat-header h3 {
-            color: #8b4513;
-            font-size: 24px;
+            color: #d4af37;
+            font-size: 28px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
         }
         
         .entertainment-section {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 20px;
-            padding: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            border: 2px solid #d4af37;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(255, 249, 230, 0.9));
+            border-radius: 25px;
+            padding: 25px;
+            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.15),
+                        0 15px 35px rgba(0, 0, 0, 0.1);
+            border: 3px solid #ffd700;
         }
         
         .entertainment-header {
             text-align: center;
-            margin-bottom: 20px;
-            color: #8b4513;
-            font-size: 20px;
+            margin-bottom: 25px;
+            color: #d4af37;
+            font-size: 24px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
         }
         
         .game-icons {
@@ -167,26 +320,28 @@
         }
         
         .game-icon {
-            background: linear-gradient(145deg, #f8f5f0, #e8dcc0);
-            border: 2px solid #d4af37;
-            border-radius: 15px;
+            background: linear-gradient(145deg, #ffffff, #fff9e6);
+            border: 2px solid #ffd700;
+            border-radius: 20px;
             padding: 20px;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
-            color: #8b4513;
+            color: #d4af37;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
         .game-icon:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            background: linear-gradient(145deg, #d4af37, #b8941f);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(255, 215, 0, 0.3);
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
             color: white;
+            border-color: #ffed4e;
         }
         
         .game-icon i {
-            font-size: 30px;
+            font-size: 32px;
             margin-bottom: 10px;
             display: block;
         }
@@ -194,6 +349,8 @@
         .game-icon span {
             font-size: 14px;
             font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
         .decorative-border {
@@ -201,27 +358,84 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 10px;
-            background: linear-gradient(90deg, #d4af37, #b8941f, #d4af37);
+            height: 15px;
+            background: linear-gradient(90deg, #ffd700, #ffed4e, #ffd700, #ffed4e, #ffd700);
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3);
         }
-        
-        .ornament {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            background: radial-gradient(circle, #d4af37, #b8941f);
+
+        /* Corazones flotantes mejorados */
+        @keyframes heartFloat {
+            0% {
+                bottom: -50px;
+                transform: translateX(0) rotate(0deg) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+                transform: translateX(-10px) rotate(-5deg) scale(1);
+            }
+            30% {
+                transform: translateX(10px) rotate(5deg) scale(1.1);
+            }
+            50% {
+                transform: translateX(-5px) rotate(-3deg) scale(1);
+            }
+            70% {
+                transform: translateX(15px) rotate(8deg) scale(1.2);
+            }
+            90% {
+                opacity: 0.5;
+                transform: translateX(-20px) rotate(-10deg) scale(0.8);
+            }
+            100% {
+                bottom: 100vh;
+                transform: translateX(-30px) rotate(-360deg) scale(0);
+                opacity: 0;
+            }
+        }
+
+        .heart-particle {
+            position: fixed;
+            font-size: 25px;
+            color: #ff69b4;
+            text-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+            pointer-events: none;
+            z-index: 999;
+            animation: heartFloat 6s linear forwards;
+        }
+
+        /* Partículas doradas */
+        .golden-particle {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: radial-gradient(circle, #ffd700, #ffed4e);
             border-radius: 50%;
-            opacity: 0.3;
+            pointer-events: none;
+            z-index: 999;
+            box-shadow: 0 0 6px rgba(255, 215, 0, 0.8);
+            animation: goldenFloat 8s linear forwards;
         }
-        
-        .ornament:nth-child(1) { top: 10%; left: 5%; animation: float 6s ease-in-out infinite; }
-        .ornament:nth-child(2) { top: 20%; right: 10%; animation: float 8s ease-in-out infinite; }
-        .ornament:nth-child(3) { bottom: 15%; left: 8%; animation: float 7s ease-in-out infinite; }
-        .ornament:nth-child(4) { bottom: 25%; right: 5%; animation: float 9s ease-in-out infinite; }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+
+        @keyframes goldenFloat {
+            0% {
+                bottom: -20px;
+                opacity: 0;
+                transform: translateX(0) scale(0);
+            }
+            10% {
+                opacity: 1;
+                transform: translateX(-20px) scale(1);
+            }
+            90% {
+                opacity: 1;
+                transform: translateX(20px) scale(1);
+            }
+            100% {
+                bottom: 100vh;
+                opacity: 0;
+                transform: translateX(-20px) scale(0);
+            }
         }
         
         @media (max-width: 768px) {
@@ -231,92 +445,119 @@
             }
             
             .welcome-message {
-                font-size: 32px;
+                font-size: 36px;
             }
             
             .game-icons {
                 grid-template-columns: repeat(3, 1fr);
             }
+
+            .wing-left, .wing-right {
+                width: 80px;
+                height: 80px;
+            }
+
+            .wing-left { left: -90px; }
+            .wing-right { right: -90px; }
+        }
+
+        #errorMessage {
+            color: #ff4444;
+            margin-top: 15px;
+            font-size: 14px;
+            text-shadow: 0 0 5px rgba(255, 68, 68, 0.3);
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <div class="decorative-border"></div>
-    <div class="ornament"></div>
-    <div class="ornament"></div>
-    <div class="ornament"></div>
-    <div class="ornament"></div>
     
+    <!-- Overlay de login con alas flotantes -->
     <div class="login-overlay" id="loginOverlay">
         <div class="login-box">
-            <h2>🏰 Entrada al Palacio 🏰</h2>
+            <!-- Alas flotantes -->
+            <img src="https://i.ibb.co/1ftngdWL/Sin-t-tulo.png" 
+                 alt="Ala izquierda" 
+                 class="floating-wings wing-left">
+            <img src="https://i.ibb.co/1ftngdWL/Sin-t-tulo.png" 
+                 alt="Ala derecha" 
+                 class="floating-wings wing-right">
+            
+            <h2>Nuestro Palacio 🏰</h2>
             <input type="password" id="passwordInput" placeholder="Ingresa la clave secreta" maxlength="5">
             <br>
             <button onclick="checkPassword()">Entrar</button>
-            <div id="errorMessage" style="color: red; margin-top: 10px; display: none;">
+            <div id="errorMessage" style="display: none;">
                 Clave incorrecta. Intenta de nuevo.
             </div>
         </div>
     </div>
+
+    <!-- Overlay de Versalles -->
+    <div class="versailles-overlay" id="versaillesOverlay">
+        <img src="https://www.viajesyfotografia.com/wp-content/uploads/2022/01/vvvvversalles-DSC03277.1_result.jpg" 
+             alt="Interior del Palacio de Versalles" 
+             class="versailles-image">
+        <div class="shine-effect"></div>
+    </div>
     
+    <!-- Contenido principal -->
     <div class="main-content" id="mainContent">
         <div class="palace-header">
             <h1 class="welcome-message">✨ Bienvenidos ✨</h1>
-            <p class="subtitle">Al Palacio del Amor Eterno</p>
+            <p class="subtitle">💬Al Palacio del Amor Eterno</p>
         </div>
         
         <div class="container">
             <div class="chat-section">
-                <div class="chat-header">
-                    <h3>💬 Nuestro Chat Privado 💬</h3>
-                </div>
+                
                 <iframe src="https://www3.cbox.ws/box/?boxid=3548849&boxtag=WAyXpu" 
                         width="100%" 
-                        height="300" 
+                        height="330" 
                         allowtransparency="yes" 
                         allow="autoplay" 
                         frameborder="0" 
                         marginheight="0" 
                         marginwidth="0" 
                         scrolling="auto"
-                        style="border-radius: 10px;">
+                        style="border-radius: 15px; border: 2px solid #ffd700;">
                 </iframe>
             </div>
             
             <div class="entertainment-section">
                 <div class="entertainment-header">
-                    <h3>🎮 Entretenimiento</h3>
+                    <h3>🎮 Diversión</h3>
                 </div>
                 <div class="game-icons">
                     <a href="javascript:void(0)" onclick="openGame('https://meet.jit.si/moderated/aa50a4ac316573f67815c0c958c15bcf1bc8b4f9ddd6e94b78e36ad3a10cd0dc')" class="game-icon">
-                        <i class="fas fa-camera"></i>
-
-                        <span>Audio y video</span>
+                        <i class="fas fa-video"></i>
+                        <span> </span>
                     </a>
                     
-              <a href="javascript:void(0)" onclick="window.open('https://poki.com/es#utm_source=redirect-en-es', '_blank', 'width=1200,height=800')" class="game-icon">
+                    <a href="javascript:void(0)" onclick="window.open('https://poki.com/es#utm_source=redirect-en-es', '_blank', 'width=1200,height=800')" class="game-icon">
                         <i class="fas fa-gamepad"></i>
                         <span>Juegos</span>
                     </a>
 
-                    <a href="javascript:void(0)" onclick="window.open('https://poki.com/es#utm_source=redirect-en-es', '_blank', 'width=1200,height=800')" class="game-icon">
+                    <a href="javascript:void(0)" onclick="window.open('https://www.crazygames.com/es/multiplayer', '_blank', 'width=1200,height=800')" class="game-icon">
                         <i class="fas fa-dice"></i>
-                        <span>Ludo</span>
+                        <span>Multi</span>
                     </a>
                     
                     <a href="javascript:void(0)" onclick="window.open('https://poki.com/es#utm_source=redirect-en-es', '_blank', 'width=1200,height=800')" class="game-icon">
                         <i class="fas fa-plus"></i>
-                        <span>Mas Juegos</span>
+                        <span>Más</span>
                     </a>
                 </div>
             </div>
         </div>
     </div>
     
-    <div id="gameModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000;">
-        <div style="position: relative; width: 90%; height: 90%; margin: 5% auto; background: white; border-radius: 15px; overflow: hidden;">
-            <button onclick="closeGame()" style="position: absolute; top: 10px; right: 15px; z-index: 2001; background: #d4af37; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 16px;">
+    <!-- Modal de juegos -->
+    <div id="gameModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 3000;">
+        <div style="position: relative; width: 90%; height: 90%; margin: 5% auto; background: white; border-radius: 20px; overflow: hidden; border: 3px solid #ffd700;">
+            <button onclick="closeGame()" style="position: absolute; top: 15px; right: 20px; z-index: 3001; background: linear-gradient(45deg, #ffd700, #ffed4e); color: #1a1a2e; border: none; padding: 12px 20px; border-radius: 25px; cursor: pointer; font-size: 16px; font-weight: bold; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
                 ✕ Cerrar
             </button>
             <iframe id="gameFrame" src="" width="100%" height="100%" frameborder="0" style="border-radius: 15px;"></iframe>
@@ -329,21 +570,44 @@
             const overlay = document.getElementById('loginOverlay');
             const mainContent = document.getElementById('mainContent');
             const errorMessage = document.getElementById('errorMessage');
+            const versaillesOverlay = document.getElementById('versaillesOverlay');
             
             if (input.value === '12345') {
-                overlay.style.display = 'none';
-                mainContent.style.display = 'block';
-                // Mostrar mensaje de bienvenida con efecto
+                // Crear partículas doradas antes de la transición
+                for (let i = 0; i < 30; i++) {
+                    setTimeout(() => {
+                        createGoldenParticle();
+                    }, i * 100);
+                }
+                
+                // Mostrar la imagen de Versalles
                 setTimeout(() => {
-                    const welcome = document.querySelector('.welcome-message');
-                    welcome.style.animation = 'fadeInGlow 2s ease-in';
-                }, 100);
+                    versaillesOverlay.classList.add('active');
+                    
+                    // Ocultar overlay de login mientras se muestra Versalles
+                    setTimeout(() => {
+                        overlay.style.display = 'none';
+                    }, 500);
+                    
+                    // Ocultar la imagen después de 4 segundos
+                    setTimeout(() => {
+                        versaillesOverlay.classList.remove('active');
+                        mainContent.style.display = 'block';
+                        
+                        // Animación de bienvenida
+                        setTimeout(() => {
+                            const welcome = document.querySelector('.welcome-message');
+                            welcome.style.animation = 'fadeInGlow 2s ease-in';
+                        }, 100);
+                    }, 4000);
+                }, 300);
+                
             } else {
                 errorMessage.style.display = 'block';
                 input.value = '';
-                input.style.borderColor = 'red';
+                input.style.borderColor = '#ff4444';
                 setTimeout(() => {
-                    input.style.borderColor = '#d4af37';
+                    input.style.borderColor = '#ffd700';
                     errorMessage.style.display = 'none';
                 }, 2000);
             }
@@ -377,46 +641,269 @@
             }
         });
         
-        // Efectos de partículas románticas
+        // Crear corazones flotantes
         function createHeart() {
+            const hearts = ['💖', '💕', '💗', '💓', '💝'];
             const heart = document.createElement('div');
-            heart.innerHTML = '💖';
-            heart.style.position = 'fixed';
+            heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+            heart.className = 'heart-particle';
             heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
-            heart.style.opacity = '0.7';
-            heart.style.fontSize = '20px';
-            heart.style.pointerEvents = 'none';
-            heart.style.zIndex = '1';
-            heart.style.animation = 'heartFloat 4s linear forwards';
+            heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            heart.style.fontSize = (Math.random() * 15 + 20) + 'px';
             
             document.body.appendChild(heart);
             
             setTimeout(() => {
                 heart.remove();
-            }, 4000);
+            }, 6000);
         }
         
-        // CSS para animación de corazones
+        // Crear partículas doradas
+        function createGoldenParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'golden-particle';
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.animationDuration = (Math.random() * 4 + 6) + 's';
+            particle.style.width = particle.style.height = (Math.random() * 4 + 2) + 'px';
+            
+            document.body.appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 8000);
+        }
+        
+        // Crear corazones constantemente
+        setInterval(createHeart, 3000);
+        
+        // Crear partículas doradas ocasionalmente
+        setInterval(createGoldenParticle, 4000);
+        
+        // Efecto de partículas al mover el mouse en el login
+        const loginBox = document.querySelector('.login-box');
+        if (loginBox) {
+            loginBox.addEventListener('mousemove', (e) => {
+                if (Math.random() > 0.9) {
+                    const rect = loginBox.getBoundingClientRect();
+                    const x = e.clientX;
+                    const y = e.clientY;
+                    
+                    const particle = document.createElement('div');
+                    particle.style.position = 'fixed';
+                    particle.style.left = x + 'px';
+                    particle.style.top = y + 'px';
+                    particle.style.width = '6px';
+                    particle.style.height = '6px';
+                    particle.style.background = 'radial-gradient(circle, #ffd700, transparent)';
+                    particle.style.borderRadius = '50%';
+                    particle.style.pointerEvents = 'none';
+                    particle.style.zIndex = '1001';
+                    particle.style.animation = 'goldenFloat 2s ease-out forwards';
+                    
+                    document.body.appendChild(particle);
+                    setTimeout(() => particle.remove(), 2000);
+                }
+            });
+        }
+    </script>
+    
+    
+    
+    
+    
+    <script>
+    // Sistema de seguridad - Cierre automático de sesión cada 60 minutos
+    (function() {
+        const SESSION_TIMEOUT = 60 * 60 * 1000; // 60 minutos en milisegundos
+        const WARNING_TIME = 5 * 60 * 1000; // Advertencia 5 minutos antes
+        let sessionTimer;
+        let warningTimer;
+        let lastActivity = Date.now();
+        
+        // Función para cerrar sesión
+        function closeSession() {
+            // Limpiar todos los timers
+            clearTimeout(sessionTimer);
+            clearTimeout(warningTimer);
+            
+            // Mostrar mensaje de cierre
+            const overlay = document.createElement('div');
+            overlay.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.9);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 9999;
+            `;
+            
+            const message = document.createElement('div');
+            message.style.cssText = `
+                background: white;
+                padding: 30px;
+                border-radius: 20px;
+                text-align: center;
+                border: 3px solid #ffd700;
+                box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            `;
+            message.innerHTML = `
+                <h2 style="color: #d4af37; margin-bottom: 20px;">⏰ Sesión Expirada</h2>
+                <p style="color: #666; margin-bottom: 20px;">Por seguridad, tu sesión ha finalizado.</p>
+                <p style="color: #999; font-size: 14px;">Redirigiendo en 3 segundos...</p>
+            `;
+            
+            overlay.appendChild(message);
+            document.body.appendChild(overlay);
+            
+            // Redirigir después de 3 segundos
+            setTimeout(() => {
+                // Recargar la página para volver al login
+                location.reload();
+            }, 3000);
+        }
+        
+        // Función para mostrar advertencia
+        function showWarning() {
+            const warningDiv = document.createElement('div');
+            warningDiv.id = 'session-warning';
+            warningDiv.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: linear-gradient(145deg, #fff, #fff9e6);
+                border: 2px solid #ffd700;
+                border-radius: 15px;
+                padding: 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                z-index: 5000;
+                max-width: 300px;
+                animation: slideIn 0.5s ease-out;
+            `;
+            
+            warningDiv.innerHTML = `
+                <h4 style="color: #d4af37; margin-bottom: 10px;">⚠️ Aviso de Seguridad</h4>
+                <p style="color: #666; font-size: 14px;">Tu sesión expirará en 5 minutos por seguridad.</p>
+                <button onclick="resetSessionTimer()" style="
+                    margin-top: 15px;
+                    background: linear-gradient(45deg, #ffd700, #ffed4e);
+                    color: #1a1a2e;
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 20px;
+                    cursor: pointer;
+                    font-weight: bold;
+                ">Continuar</button>
+            `;
+            
+            document.body.appendChild(warningDiv);
+            
+            // Remover advertencia después de 30 segundos
+            setTimeout(() => {
+                const warning = document.getElementById('session-warning');
+                if (warning) warning.remove();
+            }, 30000);
+        }
+        
+        // Función para resetear el timer
+        window.resetSessionTimer = function() {
+            clearTimeout(sessionTimer);
+            clearTimeout(warningTimer);
+            lastActivity = Date.now();
+            
+            // Remover advertencia si existe
+            const warning = document.getElementById('session-warning');
+            if (warning) warning.remove();
+            
+            // Reiniciar timers
+            startTimers();
+            
+            // Mostrar confirmación
+            const confirmation = document.createElement('div');
+            confirmation.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: #4CAF50;
+                color: white;
+                padding: 15px 25px;
+                border-radius: 10px;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+                z-index: 5000;
+                animation: slideIn 0.5s ease-out;
+            `;
+            confirmation.innerHTML = '✓ Sesión extendida por 60 minutos más';
+            document.body.appendChild(confirmation);
+            
+            setTimeout(() => confirmation.remove(), 3000);
+        }
+        
+        // Función para iniciar los timers
+        function startTimers() {
+            // Timer para advertencia (55 minutos)
+            warningTimer = setTimeout(() => {
+                showWarning();
+            }, SESSION_TIMEOUT - WARNING_TIME);
+            
+            // Timer para cierre de sesión (60 minutos)
+            sessionTimer = setTimeout(() => {
+                closeSession();
+            }, SESSION_TIMEOUT);
+        }
+        
+        // Detectar actividad del usuario (opcional - resetea timer con actividad)
+        function resetOnActivity() {
+            const now = Date.now();
+            // Solo resetear si han pasado más de 5 minutos desde la última actividad
+            if (now - lastActivity > 5 * 60 * 1000) {
+                resetSessionTimer();
+            }
+        }
+        
+        // Eventos de actividad (opcional - comentar si no quieres reset automático)
+        ['mousedown', 'keypress', 'scroll', 'touchstart'].forEach(event => {
+            document.addEventListener(event, resetOnActivity, true);
+        });
+        
+        // CSS para animaciones
         const style = document.createElement('style');
         style.textContent = `
-            @keyframes heartFloat {
+            @keyframes slideIn {
                 from {
-                    bottom: -50px;
-                    transform: translateX(0) rotate(0deg);
-                    opacity: 1;
+                    transform: translateX(100%);
+                    opacity: 0;
                 }
                 to {
-                    bottom: 100vh;
-                    transform: translateX(-100px) rotate(360deg);
-                    opacity: 0;
+                    transform: translateX(0);
+                    opacity: 1;
                 }
             }
         `;
         document.head.appendChild(style);
         
-        // Crear corazones cada 5 segundos
-        setInterval(createHeart, 5000);
-    </script>
+        // Iniciar timers solo si el usuario está logueado
+        if (document.getElementById('mainContent') && document.getElementById('mainContent').style.display === 'block') {
+            startTimers();
+        }
+        
+        // Observar cambios en el login para iniciar timers cuando se loguee
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.target.id === 'mainContent' && mutation.target.style.display === 'block') {
+                    startTimers();
+                }
+            });
+        });
+        
+        const mainContent = document.getElementById('mainContent');
+        if (mainContent) {
+            observer.observe(mainContent, { attributes: true, attributeFilter: ['style'] });
+        }
+    })();
+</script>
 </body>
+    <footer><center>Laura&Bryan</center></footer>
 </html>
